@@ -1,8 +1,8 @@
 
 
 #include "OttoHash.h"
-#define my_malloc malloc  //定义分配内存函数 (设定时分配内存)
-#define my_free free  //定义释放内存函数 
+#define m_malloc malloc  //定义分配内存函数 (设定时分配内存)
+#define m_free free  //定义释放内存函数 
 
 
 struct hash_node {
@@ -18,11 +18,11 @@ struct hash_table {
 
 
 struct hash_table* create_hash_table(int n) {
-	struct hash_table* t =(struct hash_table*) my_malloc(sizeof(struct hash_table)); //分配整个hash表内存
+	struct hash_table* t =(struct hash_table*) m_malloc(sizeof(struct hash_table)); //分配整个hash表内存
 
 	memset(t, 0, sizeof(struct hash_table));  //初始化整个hash表内存
 
-	t->hash_set = my_malloc(n * sizeof(struct hash_node*)); //保存指针头位置
+	t->hash_set = m_malloc(n * sizeof(struct hash_node*)); //保存指针头位置
 
 	memset(t->hash_set, 0, sizeof(struct hash_node*) * n);
 
@@ -44,7 +44,7 @@ static unsigned int hash_index(char* str)
 }
 void hash_insert(struct hash_table* t, char* key, void* value) {
 
-	struct hash_node* node = (struct hash_node*)my_malloc(sizeof(struct hash_node));
+	struct hash_node* node = (struct hash_node*)m_malloc(sizeof(struct hash_node));
 	memset(node, 0, sizeof(struct hash_node));
 	node->key = _strdup(key);
 	node->value = value;
@@ -72,13 +72,13 @@ void hash_set(struct hash_table* t, char* key, void* value) {
 void* hash_find(struct hash_table* t, char* key) {
 	
 	int index = (hash_index(key) % t->n); 
-	struct hash_node* walk = (t->hash_set[index]);
+	struct hash_node* seek = (t->hash_set[index]);
 
-	while (walk) {
-		if (strcmp((walk)->key, key) == 0) {
-			return walk->value;
+	while (seek) {
+		if (strcmp((seek)->key, key) == 0) {
+			return seek->value;
 		}
-		walk = walk->next;
+		seek = seek->next;
 	}
 
 	return NULL;
@@ -89,21 +89,21 @@ void* hash_find(struct hash_table* t, char* key) {
 
 void hash_delete(struct hash_table* t, char* key) {
 	int index = (hash_index(key) % t->n); 
-	struct hash_node** walk = &(t->hash_set[index]);
+	struct hash_node** seek = &(t->hash_set[index]);
 
-	while (*walk) {
-		if (strcmp((*walk)->key, key) == 0) {
-			struct hash_node* rm_node = *walk;
-			*walk = (*walk)->next;
+	while (*seek) {
+		if (strcmp((*seek)->key, key) == 0) {
+			struct hash_node* rm_node = *seek;
+			*seek = (*seek)->next;
 
 			rm_node->next = NULL;
 
-			my_free(rm_node->key);
-			my_free(rm_node);
+			m_free(rm_node->key);
+			m_free(rm_node);
 		}
 		else
 		{
-			walk = &((*walk)->next);
+			seek = &((*seek)->next);
 
 		}
 	}
@@ -113,16 +113,16 @@ void hash_delete(struct hash_table* t, char* key) {
 
 void hash_clear(struct hash_table* t) {
 	for (int i = 0; i < t->n; i++) {
-		struct hash_node* walk = t->hash_set[i];
+		struct hash_node* seek = t->hash_set[i];
 		t->hash_set[i] = NULL;
 
-		while (walk) {
-			struct hash_node* rm_node = walk;
-			walk = walk->next;
+		while (seek) {
+			struct hash_node* rm_node = seek;
+			seek = seek->next;
 			rm_node->next = NULL;
 
-			my_free(rm_node->key);
-			my_free(rm_node);
+			m_free(rm_node->key);
+			m_free(rm_node);
 		}
 	}
 }
@@ -131,9 +131,9 @@ void destroy_hash_table(struct hash_table* t) {
 	
 	hash_clear(t);
 	if (t->hash_set) {
-		my_free(t->hash_set);
+		m_free(t->hash_set);
 		t->hash_set =NULL;
 	}
 
-	my_free(t);
+	m_free(t);
 }
