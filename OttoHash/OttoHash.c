@@ -46,6 +46,15 @@ void hash_insert(struct hash_table* t, char* key, void* value) {
 
 	struct hash_node* node = (struct hash_node*)m_malloc(sizeof(struct hash_node));
 	memset(node, 0, sizeof(struct hash_node));
+	/*#ifdef __WINDOWS_
+		printf("0");
+		node->key = _strdup(key);
+	#endif
+	#ifdef linux
+		printf("1");
+		node->key = strdup(key);
+	#endif
+	*/
 	node->key = _strdup(key);
 	node->value = value;
 
@@ -63,8 +72,28 @@ void hash_insert(struct hash_table* t, char* key, void* value) {
 
 
 void hash_set(struct hash_table* t, char* key, void* value) {
+	int index = (hash_index(key) % t->n); 
+	struct hash_node** seek = &(t->hash_set[index]);
 	
-
+	while(*seek){
+		if(strcmp((*seek)->key,key)==0){
+			(*seek)->value = value;
+			return;
+		}
+		seek = &((*seek)->next);
+	}
+	struct hash_node* node = m_malloc(sizeof(struct hash_node));
+	memset(node,0,sizeof(struct hash_node));
+	/*#ifdef __WINDOWS_
+		node->key = _strdup(key);
+	#endif
+	#ifdef linux
+		node->key = strdup(key);
+	#endif
+	*/
+	node->key = _strdup(key);
+	node->value = value;
+	*seek = node;
 }
 
 
@@ -73,8 +102,7 @@ void* hash_find(struct hash_table* t, char* key) {
 	
 	int index = (hash_index(key) % t->n); 
 	struct hash_node* seek = (t->hash_set[index]);
-
-	while (seek) {
+	while (seek !=NULL) {
 		if (strcmp((seek)->key, key) == 0) {
 			return seek->value;
 		}
@@ -136,4 +164,22 @@ void destroy_hash_table(struct hash_table* t) {
 	}
 
 	m_free(t);
+}
+
+void* hash_get_all(struct hash_table* t){
+	int nm = 0;
+	for (int i = 0; i < t->n; i++) {
+
+		struct hash_node* seek = (t->hash_set[i]);
+		while (seek) {
+			printf("=> %s\n",seek->key);
+			nm = nm+1;
+			seek = seek->next;
+
+		}
+	};
+	printf("---------------------\n");
+	printf("all key => %d        |\n",nm);
+	printf("---------------------\n");
+	
 }

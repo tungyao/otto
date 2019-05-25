@@ -30,4 +30,7 @@ void hash_clear(struct hash_table* t);
 //删除hash表
 void destroy_hash_table(struct hash_table* t);
 
+//获取所有键
+
+void* hash_get_all(struct hash_table* t);
 #endif // OTTOHASH_H
