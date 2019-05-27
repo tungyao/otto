@@ -5,7 +5,7 @@
 /.vscode/
 /cmake-build-debug/
 CmakeLists.txt
-
+/.idea/
 
 # Compiled Object files
 *.slo
