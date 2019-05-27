@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
 
+# ignore this file
+/.vscode/
+/cmake-build-debug/
+
+
 # Compiled Object files
 *.slo
 *.lo
