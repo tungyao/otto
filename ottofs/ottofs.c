@@ -1,7 +1,21 @@
 #include "ottofs.h"
 
-int main(){
-    printf("HELLO  WORLD");
+void *read(FILE *fp) {
 
-    return  0;
+    return NULL;
+}
+
+void *readb(FILE *fp) {
+
+    return NULL;
+}
+
+int write(FILE *fp,void* str) {
+
+    return 0;
+}
+
+int writeb(FILE *fp,char* bt) {
+
+    return 0;
 }
