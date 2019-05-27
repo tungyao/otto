@@ -2,10 +2,10 @@
 *.d
 
 # ignore this file
-/.vscode/
-/cmake-build-debug/
-CmakeLists.txt
-/.idea/
+/.vscode
+/cmake-build-debug
+CMakeLists.txt
+/.idea
 
 # Compiled Object files
 *.slo
