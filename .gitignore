@@ -4,6 +4,7 @@
 # ignore this file
 /.vscode/
 /cmake-build-debug/
+CmakeLists.txt
 
 
 # Compiled Object files
