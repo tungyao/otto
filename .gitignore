@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Prerequisites
 *.d
 
@@ -31,8 +32,31 @@ CMakeLists.txt
 *.la
 *.a
 *.lib
+=======
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+>>>>>>> 1624a8b3009f6f49d2637403ae13b7a788ab1e99
 
 # Executables
 *.exe
 *.out
 *.app
+<<<<<<< HEAD
+=======
+*.i*86
+*.x86_64
+*.hex
+>>>>>>> 1624a8b3009f6f49d2637403ae13b7a788ab1e99
