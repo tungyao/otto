@@ -4,12 +4,10 @@
 #include <stdlib.h>
 #ifndef OTTOFS_H
 #define OTTOFS_H
-FILE *fp;
 
-void* read(FILE *fp);
-void* readb(FILE *fp);
-int write(FILE *fp,void* str);
-int writeb(FILE *fp,char* bt);
-
-
+void* OTTOFS_read(FILE *fp);
+void* OTTOFS_readb(FILE *fp);
+int OTTOFS_write(FILE *fp, char* str);
+int OTTOFS_writeb(FILE *fp, char* bt);
+long OTTOFS_size_file(FILE *file);
 #endif
