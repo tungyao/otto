@@ -1,8 +1,9 @@
-<<<<<<< HEAD
-# otto
-=======
-## otto
+# OTTO => C packages
+## package
+---
 
-otto
-
->>>>>>> 1624a8b3009f6f49d2637403ae13b7a788ab1e99
+> *****ottojson***** ： `json format tool`  
+> *****ottofs***** : `faster file deal tool`  
+> *****autobackup***** : `Automatic backup folder`  
+> *****ottorap***** : `fast C web frame`  
+> *****more***** : `I'm writing`
