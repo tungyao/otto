@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+# Prerequisites
+*.d
+
+# ignore this file
+.vscode
+cmake-build-debug
+CMakeLists.txt
+.idea
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+=======
 # Object files
 *.o
 *.ko
@@ -13,11 +48,15 @@
 *.so
 *.so.*
 *.dylib
+>>>>>>> 1624a8b3009f6f49d2637403ae13b7a788ab1e99
 
 # Executables
 *.exe
 *.out
 *.app
+<<<<<<< HEAD
+=======
 *.i*86
 *.x86_64
 *.hex
+>>>>>>> 1624a8b3009f6f49d2637403ae13b7a788ab1e99
