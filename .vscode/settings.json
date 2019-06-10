@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "fcgi_stdio.h": "c"
     }
 }

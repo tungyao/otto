@@ -1,10 +1,8 @@
-#include "dispatcher.h"
 #include "request.h"
 #include "error.h"
-
 #include "string.h"
 
-#include "fcgi_stdio.h"
+#include "fcgi\fcgi_stdio.h"
 
 handler *head = NULL;
 handler *last = NULL;
